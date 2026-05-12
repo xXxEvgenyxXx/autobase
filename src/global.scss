@@ -1,0 +1,13 @@
+:root {
+  --color-bg: #0B3D91;
+  --color-accent: #FF6B00;
+  --color-text: #F5F7FA;
+  --color-border: #2C3E50;
+}
+
+body {
+  font-family: 'Inter',sans-serif;
+  font-size:16px;
+  color:var(--color-text);
+  background-color:var(--color-bg);
+}
