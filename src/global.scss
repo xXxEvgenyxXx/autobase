@@ -4,7 +4,10 @@
   --color-text: #F5F7FA;
   --color-border: #2C3E50;
 }
-
+*{
+  margin: 0;
+  padding: 0;
+}
 body {
   font-family: 'Inter',sans-serif;
   font-size:16px;
