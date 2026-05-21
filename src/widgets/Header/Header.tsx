@@ -16,8 +16,8 @@ export function Header(){
                 <NavLink className={getLinkClass} to={routes.everyone.catalog}>Каталог</NavLink>
             </div>
             <div className={s.linksWrapper}>
-                <Link to={routes.everyone.login}>Войти</Link>
-                <Link to={routes.everyone.register}>Регистрация</Link>
+                <Link className={s.headerLink} to={routes.everyone.login}>Войти</Link>
+                <Link className={s.headerLink} to={routes.everyone.register}>Регистрация</Link>
             </div>
         </header>
     )
