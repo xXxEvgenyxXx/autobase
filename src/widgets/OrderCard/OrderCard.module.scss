@@ -1,0 +1,9 @@
+.orderCard {
+  border:2px solid var(--color-border);
+  border-radius:6px;
+  padding:10px;
+  display: flex;
+  flex-direction: column;
+  width:300px;
+  gap:10px;
+}

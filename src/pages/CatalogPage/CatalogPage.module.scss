@@ -1,5 +1,6 @@
 .title {
   text-align: center;
+  margin-bottom:20px;
 }
 .catalogWrapper {
   display: flex;
@@ -17,5 +18,9 @@
   }
   .cardsWrapper {
     width:85%;
+    display: grid;
+    grid-template-columns:repeat(3,1fr);
+    padding: 0 20px;
+    gap:30px;
   }
 }

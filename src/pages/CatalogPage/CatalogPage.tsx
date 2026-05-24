@@ -1,4 +1,4 @@
-import {MainLayout} from "@/widgets";
+import {MainLayout, OrderCard} from "@/widgets";
 import s from './CatalogPage.module.scss'
 
 export function CatalogPage(){
@@ -10,7 +10,7 @@ export function CatalogPage(){
                     <h2>Фильтры</h2>
                 </aside>
                 <div className={s.cardsWrapper}>
-                    карточки
+                    <OrderCard name="Услуга" shortDescription="Краткое описание услуги" />
                 </div>
             </div>
         </MainLayout>

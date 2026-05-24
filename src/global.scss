@@ -24,3 +24,13 @@ a {
     transition:0.3s;
   }
 }
+
+.ant-btn {
+  background-color:var(--color-bg);
+  color: var(--color-text);
+  &:hover {
+    color:var(--color-accent) !important;
+    background-color:var(--color-bg) !important;
+    border-color:var(--color-accent) !important;
+  }
+}
