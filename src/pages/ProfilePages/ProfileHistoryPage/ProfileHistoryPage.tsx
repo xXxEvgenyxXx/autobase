@@ -1,9 +1,9 @@
-
+import {ProfileLayout} from "@/widgets";
 
 export function ProfileHistoryPage(){
     return (
-        <div>
+        <ProfileLayout>
             Profile history
-        </div>
+        </ProfileLayout>
     )
 }

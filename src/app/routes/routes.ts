@@ -21,7 +21,7 @@ export const routes = {
     },
     user:{
         profile: "/profile",
-        profileHistory:"/profile/history",
+        profileHistory:"/profile-history",
         orderForm:"/order-form",
         favorite:"/favorite"
     }

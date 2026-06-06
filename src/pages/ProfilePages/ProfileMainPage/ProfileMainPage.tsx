@@ -1,9 +1,9 @@
-import {MainLayout} from "@/widgets";
+import {ProfileLayout} from "@/widgets";
 
 export function ProfileMainPage() {
     return (
-        <MainLayout>
+        <ProfileLayout>
             Profile main page
-        </MainLayout>
+        </ProfileLayout>
     )
 }
