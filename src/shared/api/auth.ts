@@ -1,5 +1,5 @@
 import apiClient from './client';
-import type { LoginRequest, RegisterRequest, AuthResponse } from '@/shared/types';
+import type { LoginRequest, RegisterRequest, AuthResponse} from '@/shared/types';
 
 export const login = (data: LoginRequest): Promise<AuthResponse> => {
     return apiClient.post('/auth/login', data);
@@ -21,13 +21,15 @@ export const removeToken = () => {
 };
 
 // ----- user -----
-export const saveUser = (user: { id: number; email: string; roleId: number }) => {
+export const saveUser = (user: AuthResponse['user']) => {
     localStorage.setItem('user', JSON.stringify(user));
 };
-export const getUser = (): { id: number; email: string; roleId: number } | null => {
+
+export const getUser = (): AuthResponse['user'] | null => {
     const user = localStorage.getItem('user');
     return user ? JSON.parse(user) : null;
 };
+
 export const removeUser = () => {
     localStorage.removeItem('user');
 };

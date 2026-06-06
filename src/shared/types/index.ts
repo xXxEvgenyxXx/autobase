@@ -117,6 +117,9 @@ export interface AuthResponse {
         id: number;
         email: string;
         roleId: number;
+        name: string;
+        surname: string;
+        patronymic?: string;
     };
 }
 

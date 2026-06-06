@@ -1,0 +1,33 @@
+.profile {
+  padding: 30px;
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 15px;
+
+  .editButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .personalData {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 500px;
+
+    .avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--color-border);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+    }
+  }
+}
