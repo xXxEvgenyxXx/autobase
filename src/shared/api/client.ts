@@ -1,17 +1,23 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: '/api', // прокси преобразует /api/xxx -> http://api/xxx
+    baseURL: '/api',
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-// Перехватчик ответов: извлекаем data из ответа или выбрасываем ошибку
+apiClient.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
+// Перехватчик ответов (оставляем как было)
 apiClient.interceptors.response.use(
-    (response) => {
-        return response.data;
-    },
+    (response) => response.data,
     (error) => {
         const message =
             error.response?.data?.error || error.message || 'Something went wrong';

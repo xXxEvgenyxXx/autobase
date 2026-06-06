@@ -97,6 +97,29 @@ export interface DriverOrder {
     driverUserId?: number;
 }
 
+export interface LoginRequest {
+    email: string;
+    password: string;
+}
+
+export interface RegisterRequest {
+    name: string;
+    surname: string;
+    patronymic?: string;
+    email: string;
+    password: string;
+    roleId: number;
+}
+
+export interface AuthResponse {
+    token: string;
+    user: {
+        id: number;
+        email: string;
+        roleId: number;
+    };
+}
+
 // Универсальный ответ сервера
 export interface ApiResponse<T> {
     data?: T;

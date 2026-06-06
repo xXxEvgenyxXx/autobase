@@ -26,11 +26,19 @@ a {
 }
 
 .ant-btn {
-  background-color:var(--color-bg);
-  color: var(--color-text);
+  background-color:var(--color-bg) !important;
+  color: var(--color-text) !important;
+  border-color:var(--color-text) !important;
   &:hover {
     color:var(--color-accent) !important;
     background-color:var(--color-bg) !important;
     border-color:var(--color-accent) !important;
   }
+}
+
+.ant-typography {
+  color: var(--color-text) !important;
+}
+.ant-form-item-label > label {
+  color: var(--color-text) !important;
 }
