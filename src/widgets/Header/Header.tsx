@@ -4,7 +4,7 @@ import { Logo } from '@/widgets'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import type { NavLinkRenderProps } from 'react-router-dom'
 import clsx from 'clsx'
-import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
+import { LogoutOutlined, UserOutlined, ToolOutlined } from '@ant-design/icons'
 import { useAuth } from '@/shared/hooks/useAuth'
 import { getUser, logout } from '@/shared/api/auth'
 import { Button, Space } from 'antd'
@@ -44,6 +44,11 @@ export function Header() {
                         {(user?.roleId === 1 || user?.roleId === 2 || user?.roleId === 3) && (
                             <NavLink className={getLinkClass} to={routes.user.profile}>
                                 <UserOutlined/>
+                            </NavLink>
+                        )}
+                        {user?.roleId === 2 && (
+                            <NavLink className={getLinkClass} to={routes.admin.dashboard}>
+                                <ToolOutlined/>
                             </NavLink>
                         )}
                         <Button

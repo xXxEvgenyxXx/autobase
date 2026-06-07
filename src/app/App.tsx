@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {routesArray} from "@/app/routes";
-import {ProtectedRoute} from "@/widgets";
+import {AdminRoute, ProtectedRoute} from "@/widgets";
 
 function App() {
   return (
@@ -18,6 +18,15 @@ function App() {
                           <ProtectedRoute>
                               <route.element/>
                           </ProtectedRoute>
+                      }/>
+                  ))
+              }
+              {
+                  routesArray.admin.map((route)=>(
+                      <Route path={route.path} element={
+                          <AdminRoute>
+                              <route.element/>
+                          </AdminRoute>
                       }/>
                   ))
               }

@@ -1,9 +1,9 @@
-
+import {AdminLayout} from "@/widgets";
 
 export function AdminDashboardPage() {
     return (
-        <div>
+        <AdminLayout>
             Admin dashboard
-        </div>
+        </AdminLayout>
     )
 }

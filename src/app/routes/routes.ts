@@ -16,8 +16,8 @@ export const routes = {
         login: "/login",
     },
     admin:{
-        dashboard: "/admin/dashboard",
-        orders:"/admin/orders",
+        dashboard: "/admin-dashboard",
+        orders:"/admin-orders",
     },
     user:{
         profile: "/profile",
