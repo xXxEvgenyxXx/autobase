@@ -55,6 +55,7 @@ export function CatalogPage() {
                                 key={type.id}
                                 name={type.name}
                                 shortDescription={type.shortDesc}
+                                typeId={type.id}
                             />
                         ))
                     ) : (
