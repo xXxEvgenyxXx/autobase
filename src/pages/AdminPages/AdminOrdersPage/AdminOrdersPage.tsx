@@ -1,12 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Table, Select, Space, message, Spin, Typography, Input } from 'antd';
+import { Table, Select, Space, message, Spin, Input } from 'antd';
 import { AdminLayout } from '@/widgets';
 import { getOrders, updateOrder } from '@/shared/api/orders';
 import { getOrderStatuses } from '@/shared/api/orderStatuses';
 import { getDrivers } from '@/shared/api/drivers';
 import type { Order, OrderStatus, Driver } from '@/shared/types';
 
-const { Text } = Typography;
 const { Option } = Select;
 
 export function AdminOrdersPage() {
@@ -161,7 +160,7 @@ export function AdminOrdersPage() {
                 const freeDrivers = getFreeDrivers(record.driverId);
                 // Если текущий водитель занят, его можно не менять – просто оставляем заглушку
                 if (freeDrivers.length === 0) {
-                    return <Text type="secondary">Нет свободных</Text>;
+                    return <p>Нет свободных</p>;
                 }
                 return (
                     <Select
