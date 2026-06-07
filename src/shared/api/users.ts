@@ -20,3 +20,7 @@ export const updateUser = (id: number, data: UserUpdate): Promise<{ message: str
 export const deleteUser = (id: number): Promise<{ message: string }> => {
     return apiClient.delete(`/users/${id}`);
 };
+
+export const updateUserRole = (id: number, roleId: number): Promise<{ message: string }> => {
+    return apiClient.put(`/users/${id}/role`, { roleId });
+};

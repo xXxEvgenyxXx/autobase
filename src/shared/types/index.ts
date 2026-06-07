@@ -10,7 +10,8 @@ export interface User {
     patronymic?: string;
     email: string;
     roleId: number;
-    role?: Role; // если будете включать связанную роль в ответ
+    role?: Role;
+    roleName?: string;
 }
 
 export interface UserCreate {

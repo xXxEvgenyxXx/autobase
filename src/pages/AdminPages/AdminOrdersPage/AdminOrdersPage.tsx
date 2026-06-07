@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Table, Select, Space, message, Spin, Typography } from 'antd';
+import { Table, Select, Space, message, Spin, Typography, Input } from 'antd';
 import { AdminLayout } from '@/widgets';
 import { getOrders, updateOrder } from '@/shared/api/orders';
 import { getOrderStatuses } from '@/shared/api/orderStatuses';
@@ -217,11 +217,10 @@ export function AdminOrdersPage() {
                     ))}
                 </Select>
 
-                <input
+                <Input
                     placeholder="Поиск по заказчику (ФИО)"
                     value={filterUser}
                     onChange={(e) => setFilterUser(e.target.value)}
-                    style={{ padding: '4px 11px', border: '1px solid #d9d9d9', borderRadius: 6, width: 200 }}
                 />
             </Space>
 

@@ -5,7 +5,7 @@ import {
     MainPage,
     OrderFormPage,
     ProfileHistoryPage,
-    ProfileMainPage
+    ProfileMainPage, AdminUsersPage, AdminDriversPage
 } from "@/pages";
 
 export const routes = {
@@ -18,6 +18,8 @@ export const routes = {
     admin:{
         dashboard: "/admin-dashboard",
         orders:"/admin-orders",
+        users:"/admin-users",
+        drivers: "/admin-drivers",
     },
     user:{
         profile: "/profile",
@@ -82,6 +84,16 @@ export const routesArray = {
             name:"Отслеживание заказов",
             path: routes.admin.orders,
             element: AdminOrdersPage
+        },
+        {
+            name:"Отслеживание пользователей",
+            path: routes.admin.users,
+            element:AdminUsersPage
+        },
+        {
+            name:"Отслеживание водителей",
+            path:routes.admin.drivers,
+            element: AdminDriversPage
         }
     ]
 }
