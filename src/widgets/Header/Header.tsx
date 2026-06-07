@@ -41,7 +41,7 @@ export function Header() {
                     </>
                 ) : (
                     <Space size="middle">
-                        {user?.roleId === 1 && (
+                        {(user?.roleId === 1 || user?.roleId === 2 || user?.roleId === 3) && (
                             <NavLink className={getLinkClass} to={routes.user.profile}>
                                 <UserOutlined/>
                             </NavLink>

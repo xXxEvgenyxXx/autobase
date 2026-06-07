@@ -35,8 +35,9 @@ export interface Driver {
     id: number;
     userId: number;
     isBusy: number;
-    userName?: string; // если джойните в запросе
+    userName?: string;
     userSurname?: string;
+    userPatronymic?: string;
 }
 
 export interface DriverCreate {

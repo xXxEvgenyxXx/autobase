@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { MainLayout } from '@/widgets';
-import { Form, Select, Input, Button, message, Alert, Spin, InputNumber, Typography } from 'antd';
+import { Form, Select, Input, Button, message, Spin, InputNumber, Typography } from 'antd';
 import { getOrderTypes } from '@/shared/api/orderTypes';
 import { getDrivers } from '@/shared/api/drivers';
 import { createOrder } from '@/shared/api/orders';
@@ -227,29 +227,18 @@ export function OrderFormPage() {
                         label="Водитель"
                         rules={[{ required: true, message: 'Выберите водителя' }]}
                     >
-                        <Select
-                            placeholder={
-                                freeDriversExist
-                                    ? 'Выберите свободного водителя'
-                                    : 'Нет свободных водителей'
-                            }
-                            disabled={!freeDriversExist}
-                        >
-                            {drivers.map((d) => (
-                                <Option key={d.id} value={d.id}>
-                                    Водитель #{d.id} (ID пользователя: {d.userId})
-                                </Option>
-                            ))}
-                        </Select>
+                        {freeDriversExist ? (
+                            <Select placeholder="Выберите свободного водителя">
+                                {drivers.map((d) => (
+                                    <Option key={d.id} value={d.id}>
+                                        {d.userSurname} {d.userName} {d.userPatronymic ?? ''}
+                                    </Option>
+                                ))}
+                            </Select>
+                        ) : (
+                            <Text style={{ color: 'var(--color-text)' }}>Нет свободных водителей</Text>
+                        )}
                     </Form.Item>
-                    {!freeDriversExist && (
-                        <Alert
-                            message="Нет свободных водителей"
-                            type="warning"
-                            showIcon
-                            style={{ marginBottom: 16 }}
-                        />
-                    )}
 
                     {/* Кнопка отправки */}
                     <Form.Item>
