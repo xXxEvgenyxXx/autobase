@@ -69,7 +69,14 @@ export interface Order {
     departure: string;
     destination: string;
     price: number;
-    userName?: string;
+    userName: string;
+    userSurname: string;
+    userPatronymic?: string;
+    typeName: string;
+    statusName: string;
+    driverName?: string;
+    driverSurname?: string;
+    driverPatronymic?: string;
 }
 
 export interface OrderCreate {

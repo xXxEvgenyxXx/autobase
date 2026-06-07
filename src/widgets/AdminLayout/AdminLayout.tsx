@@ -17,6 +17,7 @@ export function AdminLayout(props: AdminLayoutProps) {
             <div className={s.adminLayout}>
                 <aside className={s.aside}>
                     <NavLink className={getLinkClass} to={routes.admin.dashboard}>Статистика</NavLink>
+                    <NavLink className={getLinkClass} to={routes.admin.orders}>Все заказы</NavLink>
                 </aside>
                 <div className={s.mainContent}>
                     {props.children}
