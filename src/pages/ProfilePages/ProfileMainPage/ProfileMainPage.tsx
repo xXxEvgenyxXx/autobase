@@ -16,6 +16,7 @@ export function ProfileMainPage() {
                 surname: currentUser.surname || "",
                 patronymic: currentUser.patronymic || "",
                 email: currentUser.email || "",
+                roleId: currentUser.roleId,
             }
             : null
     );
@@ -60,6 +61,15 @@ export function ProfileMainPage() {
         [userData, currentUser]
     );
 
+    const getRoleName = (roleId: number): string => {
+        switch (roleId) {
+            case 1: return 'Заказчик';
+            case 2: return 'Администратор';
+            case 3: return 'Водитель';
+            default: return 'Неизвестно';
+        }
+    };
+
     if (!userData) {
         return (
             <ProfileLayout>
@@ -71,7 +81,12 @@ export function ProfileMainPage() {
     return (
         <ProfileLayout>
             {!isEditing ? (
-                <ProfileView fullName={fullName} email={userData.email} onEdit={handleEdit} />
+                <ProfileView
+                    fullName={fullName}
+                    email={userData.email}
+                    role={getRoleName(userData.roleId)}
+                    onEdit={handleEdit}
+                />
             ) : (
                 <ProfileEdit
                     initialValues={{
