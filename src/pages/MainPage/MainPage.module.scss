@@ -1,0 +1,133 @@
+// MainPage.module.scss
+.mainPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+
+  // Hero-секция
+  .hero {
+    margin-bottom: 48px;
+  }
+
+  .carouselSlide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-bg));
+    color: var(--color-text);
+    padding: 48px 24px;
+    text-align: center;
+
+    .slideIcon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      color: var(--color-text);
+      opacity: 0.9;
+    }
+
+    .slideTitle {
+      color: var(--color-text) !important;
+      margin-bottom: 8px;
+    }
+
+    .slideDesc {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 16px;
+      max-width: 500px;
+    }
+  }
+
+  // Заголовки секций
+  .sectionTitle {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    color: var(--color-text);
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--color-accent);
+      margin: 12px auto 0;
+    }
+  }
+
+  // Услуги
+  .services {
+    margin-bottom: 48px;
+
+    .serviceCard {
+      text-align: center;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      color: var(--color-text);
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(var(--color-accent), 0.3);
+      }
+
+      .cardIcon {
+        font-size: 36px;
+        color: var(--color-accent);
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  // Преимущества
+  .advantages {
+    margin-bottom: 48px;
+
+    .advantageCard {
+      text-align: center;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      color: var(--color-text);
+
+      .advIcon {
+        font-size: 32px;
+        color: var(--color-accent);
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  // Блок с призывом
+  .cta {
+    text-align: center;
+    padding: 48px 24px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    margin-bottom: 24px;
+
+    .ctaText {
+      font-size: 16px;
+      color: var(--color-text);
+      opacity: 0.85;
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+  }
+
+  // Адаптивность
+  @media (max-width: 768px) {
+    .carouselSlide {
+      min-height: 220px;
+      padding: 32px 16px;
+
+      .slideIcon {
+        font-size: 36px;
+      }
+    }
+  }
+}
