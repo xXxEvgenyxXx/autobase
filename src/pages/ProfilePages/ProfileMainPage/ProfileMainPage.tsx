@@ -1,12 +1,14 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ProfileLayout } from "@/widgets";
 import { ProfileView } from "./ProfileView";
 import { ProfileEdit } from "./ProfileEdit";
 import { getUser, saveUser } from "@/shared/api/auth";
 import { updateUser } from "@/shared/api/users";
+import { getDrivers, updateDriver } from "@/shared/api/drivers";
+import { message } from "antd";
 
 export function ProfileMainPage() {
-    const currentUser = getUser(); // синхронно из localStorage
+    const currentUser = getUser();
     const [isEditing, setIsEditing] = useState(false);
     const [userData, setUserData] = useState(
         currentUser
@@ -21,17 +23,34 @@ export function ProfileMainPage() {
             : null
     );
 
+    // Данные водителя (если роль = 3)
+    const [driverInfo, setDriverInfo] = useState<{ id: number; isBusy: number } | null>(null);
+    const [loadingDriver, setLoadingDriver] = useState(false);
+
+    // Загрузка данных водителя при монтировании, если роль = 3
+    useEffect(() => {
+        if (userData?.roleId === 3) {
+            setLoadingDriver(true);
+            getDrivers()
+                .then((drivers) => {
+                    const found = drivers.find((d) => d.userId === userData.id);
+                    if (found) {
+                        setDriverInfo({ id: found.id, isBusy: found.isBusy });
+                    } else {
+                        message.error("Не найдена запись водителя");
+                    }
+                })
+                .catch(() => message.error("Ошибка загрузки статуса водителя"))
+                .finally(() => setLoadingDriver(false));
+        }
+    }, [userData]);
+
     const fullName = userData
         ? `${userData.surname} ${userData.name} ${userData.patronymic}`.trim()
         : "";
 
-    const handleEdit = () => {
-        setIsEditing(true);
-    };
-
-    const handleCancel = () => {
-        setIsEditing(false);
-    };
+    const handleEdit = () => setIsEditing(true);
+    const handleCancel = () => setIsEditing(false);
 
     const handleSave = useCallback(
         async (values: { name: string; surname: string; patronymic: string; email: string }) => {
@@ -43,7 +62,6 @@ export function ProfileMainPage() {
                     patronymic: values.patronymic,
                     email: values.email,
                 });
-                // Обновляем данные в состоянии и в localStorage
                 const updatedUser = {
                     ...currentUser!,
                     name: values.name,
@@ -55,18 +73,30 @@ export function ProfileMainPage() {
                 setUserData({ ...userData, ...values });
                 setIsEditing(false);
             } catch (err: any) {
-                throw err; // пробросим в ProfileEdit для message.error
+                throw err;
             }
         },
         [userData, currentUser]
     );
 
+    // Изменение статуса занятости водителя
+    const handleDriverStatusChange = async (newIsBusy: number) => {
+        if (!driverInfo) return;
+        try {
+            await updateDriver(driverInfo.id, { isBusy: newIsBusy });
+            setDriverInfo({ ...driverInfo, isBusy: newIsBusy });
+            message.success("Статус обновлён");
+        } catch (err: any) {
+            message.error(err.message || "Ошибка при обновлении статуса");
+        }
+    };
+
     const getRoleName = (roleId: number): string => {
         switch (roleId) {
-            case 1: return 'Заказчик';
-            case 2: return 'Администратор';
-            case 3: return 'Водитель';
-            default: return 'Неизвестно';
+            case 1: return "Заказчик";
+            case 2: return "Администратор";
+            case 3: return "Водитель";
+            default: return "Неизвестно";
         }
     };
 
@@ -78,6 +108,15 @@ export function ProfileMainPage() {
         );
     }
 
+    // Пока загружаются данные водителя, можно показать спиннер или ничего
+    if (userData.roleId === 3 && loadingDriver) {
+        return (
+            <ProfileLayout>
+                <div style={{ textAlign: "center", marginTop: 40 }}>Загрузка статуса водителя...</div>
+            </ProfileLayout>
+        );
+    }
+
     return (
         <ProfileLayout>
             {!isEditing ? (
@@ -85,6 +124,9 @@ export function ProfileMainPage() {
                     fullName={fullName}
                     email={userData.email}
                     role={getRoleName(userData.roleId)}
+                    isDriver={userData.roleId === 3}
+                    isBusy={driverInfo?.isBusy}
+                    onStatusChange={handleDriverStatusChange}
                     onEdit={handleEdit}
                 />
             ) : (
