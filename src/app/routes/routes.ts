@@ -5,7 +5,7 @@ import {
     MainPage,
     OrderFormPage,
     ProfileHistoryPage,
-    ProfileMainPage, AdminUsersPage, AdminDriversPage
+    ProfileMainPage, AdminUsersPage, AdminDriversPage, ProfileDriverOrdersPage
 } from "@/pages";
 
 export const routes = {
@@ -25,7 +25,8 @@ export const routes = {
         profile: "/profile",
         profileHistory:"/profile-history",
         orderForm:"/order-form",
-        favorite:"/favorite"
+        favorite:"/favorite",
+        driverOrders: "/driver-orders"
     }
 }
 
@@ -72,6 +73,11 @@ export const routesArray = {
             name:"Избранное",
             path:routes.user.favorite,
             element: FavoritePage
+        },
+        {
+            name:"Портфолио",
+            path:routes.user.driverOrders,
+            element: ProfileDriverOrdersPage
         }
     ],
     admin: [
