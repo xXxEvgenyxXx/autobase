@@ -19,21 +19,6 @@ export function Footer() {
                         ))}
                     </ul>
                 </div>
-
-                {/* Колонка: Личный кабинет */}
-                <div className={s.column}>
-                    <h3 className={s.title}>Личный кабинет</h3>
-                    <ul className={s.list}>
-                        {routesArray.user.map((route) => (
-                            <li key={route.path}>
-                                <Link to={route.path} className={s.link}>
-                                    {route.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
                 {/* Колонка: О нас / Контакты (по желанию) */}
                 <div className={s.column}>
                     <h3 className={s.title}>Контакты</h3>
