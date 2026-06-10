@@ -209,9 +209,9 @@ export function OrderFormPage() {
 
                     {/* Расчётная цена */}
                     <Form.Item label="Стоимость заказа">
-                        <div style={{ fontWeight: 600, fontSize: 16 }}>
+                        <p className={s.orderPrice}>
                             {computedPrice > 0 ? `${computedPrice} ₽` : '—'}
-                        </div>
+                        </p>
                         {computedPrice > 0 && (
                             <Text type="secondary" style={{ fontSize: 12 }}>
                                 {selectedTypeId === 1
