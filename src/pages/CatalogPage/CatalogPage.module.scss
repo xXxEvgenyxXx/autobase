@@ -5,19 +5,8 @@
 .catalogWrapper {
   display: flex;
   width: 100%;
-  .filtersWrapper {
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    padding:20px;
-    border-right:2px solid var(--color-border);
-    border-top:2px solid var(--color-border);
-    border-bottom:2px solid var(--color-border);
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
-  }
   .cardsWrapper {
-    width:85%;
+    width:100%;
     display: grid;
     grid-template-columns:repeat(3,1fr);
     padding: 0 20px;

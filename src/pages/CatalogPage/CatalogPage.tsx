@@ -44,10 +44,6 @@ export function CatalogPage() {
         <MainLayout>
             <h1 className={s.title}>Каталог услуг</h1>
             <div className={s.catalogWrapper}>
-                <aside className={s.filtersWrapper}>
-                    <h2>Фильтры</h2>
-                    {/* Фильтры пока не реализованы */}
-                </aside>
                 <div className={s.cardsWrapper}>
                     {orderTypes.length > 0 ? (
                         orderTypes.map((type) => (
